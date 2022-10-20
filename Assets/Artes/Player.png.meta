@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 5
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -137,13 +137,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_48
+      name: jump0
       rect:
         serializedVersion: 2
         x: 1
         y: 48
         width: 7
-        height: 7
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,13 +158,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_49
+      name: jump1
       rect:
         serializedVersion: 2
         x: 8
-        y: 49
+        y: 48
         width: 8
-        height: 7
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,13 +179,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_50
+      name: jump2
       rect:
         serializedVersion: 2
         x: 16
-        y: 50
+        y: 48
         width: 8
-        height: 6
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,13 +200,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_51
+      name: jump3
       rect:
         serializedVersion: 2
         x: 24
-        y: 49
+        y: 48
         width: 8
-        height: 7
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -523,7 +523,7 @@ TextureImporter:
         width: 7
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -544,7 +544,7 @@ TextureImporter:
         width: 8
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -565,7 +565,7 @@ TextureImporter:
         width: 8
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -586,7 +586,7 @@ TextureImporter:
         width: 8
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -611,7 +611,6 @@ TextureImporter:
     nameFileIdTable:
       Player_17: -557891732
       Player_33: 614501013
-      Player_48: -993118046
       Player_57: 1836116234
       Player_18: -2106660832
       run3: -139425876
@@ -619,11 +618,11 @@ TextureImporter:
       Player_34: -221127613
       Player_12: -1128725093
       Player_29: 1350901548
-      Player_51: 1208819947
-      Player_56: 1174685699
       run2: -1948323404
+      Player_56: 1174685699
       Player_9: 1040194131
       Player_14: 1211342329
+      jump1: -1433790497
       Player_54: -749255765
       Player_55: 1888644878
       Player_16: -1059214124
@@ -659,16 +658,18 @@ TextureImporter:
       Player_47: -938388126
       Player_53: 1554579423
       Player_31: 1566154851
-      Player_50: 785325673
+      Player_0: 1786416463
       Player_41: -680594449
       run6: -13493448
       Player_58: 1955207948
       Player_26: -1296152844
       Player_28: 475954937
       run1: 2109001340
+      jump2: 785325673
+      jump3: 1208819947
       Player_52: -1137677082
       Player_45: -1361003944
-      Player_49: -1433790497
+      jump0: -993118046
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
