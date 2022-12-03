@@ -1962,10 +1962,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 2
-  winSpot: {fileID: 368031438}
-  player: {fileID: 1723120440}
   checkPoints: []
-  isFinal: 0
+  finalLevel: 0
+  song: {fileID: 0}
 --- !u!4 &873540901
 Transform:
   m_ObjectHideFlags: 0
@@ -3222,7 +3221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723120440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.85, y: 0.36, z: 0}
+  m_LocalPosition: {x: 1.25, y: 2.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

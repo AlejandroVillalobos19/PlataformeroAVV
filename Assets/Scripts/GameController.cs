@@ -5,58 +5,132 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-
     public int level = 0;
 
+    public GameObject[] checkPoints; 
 
-    public GameObject winSpot;
+     public int finalLevel;
+    
+    private GameObject winSpot;
+    
     private BoxCollider2D winCollider;
 
-    public Player player;
+    private GameObject player;
+
     private BoxCollider2D playerCollider;
 
-    public GameObject[] checkPoints;
+    private SaveData saveData;
 
-    public bool isFinal;
+    private AudioSource audioSource;
+    public AudioClip song;
+     
+     
+    
 
-    // Start is called before the first frame update
+private void Awake()
+{
+    GameObject gameController = GameObject.Find("GameController");
+
+    DontDestroyOnLoad(gameController);
+
+    if(GameObject.FindGameObjectsWithTag(gameObject.tag).Length>1){
+        Destroy(gameObject);
+    }
+ }
     void Start()
     {
-        winCollider = winSpot.GetComponent<BoxCollider2D>();
-        playerCollider = player.GetComponent<BoxCollider2D>();
-    }   
+       
+        
+    }
+    private void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-    // Update is called once per frame
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode ){
+    winSpot = GameObject.Find("Win");
+     winCollider = winSpot.GetComponent<BoxCollider2D>();
+     player = GameObject.Find("Player");
+     playerCollider = player.GetComponent<BoxCollider2D>();
+
+     if(saveData!=null){
+        Debug.Log("");
+         level = saveData.level;
+        player.transform.position = new Vector3(saveData.position[0], saveData.position[1], saveData.position[2] );
+        saveData = null;
+                
+     }
+    }
+
+     private void OnDisable() {
+        SceneManager.sceneLoaded -= OnSceneLoaded; 
+    }
+
+
     void Update()
     {
-        if(winCollider.IsTouching(playerCollider)){
-            if(isFinal){
+        if (winCollider.IsTouching(playerCollider))
+        {
+            if (finalLevel == level)
+            {
                 SceneManager.LoadScene("Win");
-            }else{
-                SceneManager.LoadScene("Level" + (level + 1));
-            }   
+            }
+            else{
+
+            level +=1;
+            SceneManager.LoadScene("Level" + (level));
+            
+            }
         }
-    foreach (var checkPoint in checkPoints)
+
+        
+        /*foreach (var checkpoint in checkPoints)
+        {
+            BoxCollider2D checkPointCollider = checkpoint.GetComponent<BoxCollider2D>();
+            if (checkPointCollider.IsTouching(playerCollider))
+            {
+                player.GetComponent<Player>().respawnPoint = player.transform.position;
+            }
+        }
+        */
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
+        if(Input.GetKeyDown(KeyCode.G)){
+            SaveManager.SaveData(player.GetComponent<Player>(),this);
+        }
+        if(Input.GetKeyDown(KeyCode.L)){
+            LoadData();
+        }
+    }
+
+    public void Pause()
     {
-
-        BoxCollider2D checkPointCollider = checkPoint.GetComponent<BoxCollider2D>();
-
-        if(checkPointCollider.IsTouching(playerCollider)){
-            player.GetComponent<Player>().respawnPoint = player.transform.position;
+        if(Time.timeScale > 0)
+        {
+            Time.timeScale = 0;
+            GetComponent<AudioSource>().Pause();
+        } else
+        {
+            Time.timeScale = 1;
+            GetComponent<AudioSource>().Play();
         }
     }
 
-    if(Input.GetKeyDown(KeyCode.Escape)){
-        Pause();
-    }
+    public void LoadData(){
+        SaveData loadedData = SaveManager.LoadData();
+        if(loadedData!=null){
+            saveData = loadedData;
+            //Debug.Log(level);
+            //Debug.Log(loadedData.level);
 
-    }
-
-    public void Pause(){
-        if(Time.timeScale > 0){
-            Time.timeScale = 0;
-        }else{
-            Time.timeScale = 1;
+            if(level!=loadedData.level){
+                SceneManager.LoadScene("Level" + loadedData.level);
+            }else{
+                level = saveData.level;
+                player.transform.position = new Vector3(saveData.position[0], saveData.position[1], saveData.position[2] );
+                saveData = null;
+            }
         }
     }
 }
